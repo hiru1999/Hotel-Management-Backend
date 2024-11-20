@@ -32,3 +32,22 @@ export function getUsers(req,res){
     )
 
 }
+
+//delete
+export function deleteUsers(req,res){
+    const email = req.body.email;
+    User.deleteOne({email:email}).then(
+        ()=>{
+            res.json({
+                message : "User deleted successfully"
+            })
+        }
+    ).catch(
+        ()=>{
+            res.json({
+                message : "User deletion failed"
+            })
+        }
+    )
+    
+}
