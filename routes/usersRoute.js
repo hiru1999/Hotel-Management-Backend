@@ -1,15 +1,14 @@
 import express from 'express'
+import { deleteUsers, getUsers, postUsers } from '../controllers/userControllers.js'
 
 
 const userRouter = express.Router()
 
-userRouter.get("/",)
+userRouter.get("/",getUsers)
 
-userRouter.post("/",)
+userRouter.post("/",postUsers)
 
-userRouter.delete("/",)
-
-userRouter.put("/",)
+userRouter.delete("/",deleteUsers)
 
 
 export default userRouter;
