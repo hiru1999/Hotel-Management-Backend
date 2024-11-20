@@ -2,6 +2,7 @@ import bodyParser from 'body-parser'
 import express from 'express'
 import userRouter from './routes/usersRoute.js'
 import mongoose from 'mongoose'
+import galleryItemRouter from './routes/galleryItemsRoute.js'
 
 const app = express()
 
@@ -20,6 +21,7 @@ mongoose.connect(connectionString).then(
 )
 
 app.use("/api/users",userRouter)
+app.use("/api/gallery",galleryItemRouter)
 
 
 app.listen(5000, (req,res)=>{
