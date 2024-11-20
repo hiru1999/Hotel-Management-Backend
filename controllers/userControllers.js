@@ -1,4 +1,5 @@
 import User from "../models/user.js";
+import jwt from 'jsonwebtoken'
 
 //post
 export function postUsers(req, res) {
@@ -62,9 +63,18 @@ export function loginUser(req,res){
                     message : "User not found"
                 })
             }else{
+                const payload = {
+                    id: user._id,
+                    email : user.email,
+                    firstName : user.firstName,
+                    lastName : user.lastName,
+                    type : user.type
+                };
+                const token = jwt.sign(payload, "secret", {expiresIn : "48h"});
                 res.json({
                     message : "User found",
-                    user : user
+                    user : user,
+                    token : token
                 })
             }
         }
