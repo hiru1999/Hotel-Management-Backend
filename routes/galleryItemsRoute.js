@@ -1,8 +1,10 @@
 import express from 'express'
-import { postGalleryItems } from '../controllers/galleryItemControllers.js';
+import { getGalleryItems, postGalleryItems } from '../controllers/galleryItemControllers.js';
 
 const galleryItemRouter = express.Router()
 
 galleryItemRouter.post("/",postGalleryItems)
+
+galleryItemRouter.get("/",getGalleryItems)
 
 export default galleryItemRouter;
