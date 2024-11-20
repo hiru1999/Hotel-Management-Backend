@@ -19,3 +19,16 @@ export function postUsers(req, res) {
             })
         );
 }
+
+//get
+export function getUsers(req,res){
+    
+    User.find().then(
+        (usersList)=>{
+            res.json({
+                list : usersList
+            })
+        }
+    )
+
+}
