@@ -1,6 +1,6 @@
 import GalleryItem from "../models/galleryItem.js";
 
-
+//post
 export function postGalleryItems(req,res){
     const galleryItem = req.body
     const newGalleryItem = new GalleryItem(galleryItem)
@@ -19,4 +19,18 @@ export function postGalleryItems(req,res){
         }
     )
 }
+
+//get
+export function getGalleryItems(req,res){
+    
+    GalleryItem.find().then(
+        (list)=>{
+            res.json({
+                list : list
+            })
+        }
+    )
+
+}
+
     
