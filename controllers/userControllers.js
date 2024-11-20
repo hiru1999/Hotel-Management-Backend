@@ -51,3 +51,22 @@ export function deleteUsers(req,res){
     )
     
 }
+
+//login
+export function loginUser(req,res){
+    const credentials = req.body
+    User.findOne({email : credentials.email, password : credentials.password}).then(
+        (user)=>{
+            if(user == null){
+                res.json({
+                    message : "User not found"
+                })
+            }else{
+                res.json({
+                    message : "User found",
+                    user : user
+                })
+            }
+        }
+    )
+}
