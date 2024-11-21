@@ -57,6 +57,32 @@ export function getCategory(req,res){
 
 }
 
+//get by name
+export function getCategoryByName(req,res){
+    const name = req.params.name
+    
+    Category.findOne({name:name}).then(
+        (result)=>{
+            if(result == null){
+                res.json({
+                    message : "Category not found"
+                })
+            }else{
+                res.json({
+                    Category : result
+                })
+            }   
+        }
+    ).catch(
+        ()=>{
+            res.json({
+                message : "Failed to get category"
+            })
+        }
+    )
+
+}
+
 //delete
 export function deleteCategory(req,res){
     const user = req.user
