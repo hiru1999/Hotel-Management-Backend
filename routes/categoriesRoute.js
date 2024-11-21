@@ -1,5 +1,5 @@
 import express from 'express'
-import { deleteCategory, getCategory, getCategoryByName, postCategory } from '../controllers/categoryControllers.js'
+import { deleteCategory, getCategory, getCategoryByName, postCategory, updateCategory } from '../controllers/categoryControllers.js'
 
 const categoryRouter = express.Router()
 
@@ -8,6 +8,8 @@ categoryRouter.post("/",postCategory)
 categoryRouter.get("/:name",getCategoryByName)
 
 categoryRouter.get("/",getCategory)
+
+categoryRouter.put("/:name",updateCategory)
 
 categoryRouter.delete("/:name",deleteCategory)
 
