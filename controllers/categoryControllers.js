@@ -83,6 +83,11 @@ export function getCategoryByName(req,res){
 
 }
 
+//update
+export function updateCategory(req,res){
+    
+}
+
 //delete
 export function deleteCategory(req,res){
     const user = req.user
