@@ -42,9 +42,15 @@ export function postCategory(req,res){
 export function getCategory(req,res){
     
     Category.find().then(
-        (list)=>{
+        (result)=>{
             res.json({
-                list : list
+                categories : result
+            })
+        }
+    ).catch(
+        ()=>{
+            res.json({
+                message : "Failed to get categories"
             })
         }
     )
