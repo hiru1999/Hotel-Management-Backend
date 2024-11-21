@@ -12,9 +12,11 @@ app.use(bodyParser.json())
 const connectionString = "mongodb+srv://tester2:321@cluster0.kttso.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 app.use((req,res,next)=>{
-    const token = req.header("Authorization")?.replace("Bearer","")
+    const token = req.header("Authorization")?.replace("Bearer ", "");
+
     if(token != null){
-        jwt.verify(token,"secret",(err,decoded)=>{
+        jwt.verify(token,"secret",
+            (err,decoded)=>{
             if(decoded!=null){
                 req.body.user  = decoded
                 next()
