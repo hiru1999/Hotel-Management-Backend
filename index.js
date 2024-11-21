@@ -18,7 +18,7 @@ app.use((req,res,next)=>{
         jwt.verify(token,"secret",
             (err,decoded)=>{
             if(decoded!=null){
-                req.body.user  = decoded
+                req.user  = decoded
                 next()
             }else{
                 next()

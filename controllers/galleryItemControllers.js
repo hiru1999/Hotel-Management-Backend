@@ -2,10 +2,17 @@ import GalleryItem from "../models/galleryItem.js";
 
 //post
 export function postGalleryItems(req,res){
-    const user = req.body.user
+    const user = req.user
     if(user == null){
         res.status(403).json({
             message : "Please login to create a gallery item"
+        })
+        return
+    }
+
+    if(user.type != "admin"){
+        res.status(403).json({
+            message : "You are not authorized to create a gallery item"
         })
         return
     }
