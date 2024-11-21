@@ -81,4 +81,38 @@ export function updateGalleryItems(req,res){
 }
 
 
+//delete
+export function deleteGalleryItem(req,res){
+    const user = req.user
+    if(user == null){
+        res.status(403).json({
+            message : "Please login to delete a gallery item"
+        })
+        return
+    }
+
+    if(user.type != "admin"){
+        res.status(403).json({
+            message : "You are not authorized to delete a gallery item"
+        })
+        return
+    }
+    const name = req.params.name
+    GalleryItem.findOneAndDelete({name:name}).then(
+        ()=>{
+            res.json({
+                message : "Gallery item deleted successfully"
+            })
+        }   
+    ).catch(
+        ()=>{
+            res.json({
+                message : "Failed to delete gallery item"
+            })
+        } 
+    )
+    
+}
+
+
     
