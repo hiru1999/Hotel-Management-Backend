@@ -50,3 +50,36 @@ export function getCategory(req,res){
     )
 
 }
+
+//delete
+export function deleteCategory(req,res){
+    const user = req.user
+    if(user == null){
+        res.status(403).json({
+            message : "Please login to delete a category"
+        })
+        return
+    }
+
+    if(user.type != "admin"){
+        res.status(403).json({
+            message : "You are not authorized to delete a category"
+        })
+        return
+    }
+    const name = req.params.name
+    Category.findOneAndDelete({name:name}).then(
+        ()=>{
+            res.json({
+                message : "Category deleted successfully"
+            })
+        }   
+    ).catch(
+        ()=>{
+            res.json({
+                message : "Category deletion failed"
+            })
+        } 
+    )
+    
+}
