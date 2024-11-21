@@ -99,3 +99,28 @@ export function updateRoom(req,res){
         }
     )
 }
+
+//delete
+export function deleteRoom(req,res){
+    if(!isAdminValid(req)){
+        res.status(403).json({
+            message : "Unauthorized"
+        })
+        return
+    }
+    const roomId = req.params.roomId
+    Room.findOneAndDelete({roomId:roomId}).then(
+        ()=>{
+            res.json({
+                message : "Room deleted successfully"
+            })
+        }   
+    ).catch(
+        ()=>{
+            res.json({
+                message : "Room deletion failed"
+            })
+        } 
+    )
+    
+}

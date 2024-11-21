@@ -1,5 +1,5 @@
 import express from 'express'
-import { findRoomById, getRoom, postRoom, updateRoom } from '../controllers/roomControllers.js';
+import { deleteRoom, findRoomById, getRoom, postRoom, updateRoom } from '../controllers/roomControllers.js';
 
 const roomRouter = express.Router()
 
@@ -10,5 +10,7 @@ roomRouter.get("/",getRoom)
 roomRouter.get("/:roomId",findRoomById)
 
 roomRouter.put("/:roomId",updateRoom)
+
+roomRouter.delete("/:roomId",deleteRoom)
 
 export default roomRouter;
