@@ -50,3 +50,28 @@ export function getRoom(req,res){
     )
 
 }
+
+//find by roomId
+export function findRoomById(req,res){
+    const roomId = req.params.roomId
+    Room.findOne({roomId:roomId}).then(
+        (result)=>{
+            if(result == null){
+                res.json({
+                    message : "Room not found"
+                })
+            }else{
+                res.json({
+                    Category : result
+                })
+            }   
+        }
+    ).catch(
+        ()=>{
+            res.json({
+                message : "Failed to get Room"
+            })
+        }
+    )
+
+}
