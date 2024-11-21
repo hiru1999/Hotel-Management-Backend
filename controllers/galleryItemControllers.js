@@ -56,4 +56,29 @@ export function getGalleryItems(req,res){
 
 }
 
+//update
+export function updateGalleryItems(req,res){
+    if(!isAdminValid(req)){
+        res.status(403).json({
+            message : "Unauthorized"
+        })
+        return
+    }
+    const name = req.params.name
+    GalleryItem.updateOne({name:name},req.body).then(
+        ()=>{
+            res.json({
+                message : "Gallery item updated successfully"
+            })
+        }
+    ).catch(
+        ()=>{
+            res.json({
+                message : "Failed to update gallery item"
+            })
+        }
+    )
+}
+
+
     
