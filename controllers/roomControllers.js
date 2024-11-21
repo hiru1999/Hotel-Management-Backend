@@ -31,3 +31,22 @@ export function postRoom(req,res){
         }
     )
 }
+
+//get
+export function getRoom(req,res){
+    
+    Room.find().then(
+        (result)=>{
+            res.json({
+                rooms : result
+            })
+        }
+    ).catch(
+        ()=>{
+            res.json({
+                message : "Failed to get rooms"
+            })
+        }
+    )
+
+}
