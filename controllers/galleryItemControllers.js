@@ -41,9 +41,15 @@ export function postGalleryItems(req,res){
 export function getGalleryItems(req,res){
     
     GalleryItem.find().then(
-        (list)=>{
+        (result)=>{
             res.json({
-                list : list
+                galleryItems : result
+            })
+        }
+    ).catch(
+        ()=>{
+            res.json({
+                message : "Failed to get gallery items"
             })
         }
     )
