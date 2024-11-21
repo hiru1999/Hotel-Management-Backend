@@ -37,3 +37,16 @@ export function postCategory(req,res){
         }
     )
 }
+
+//get
+export function getCategory(req,res){
+    
+    Category.find().then(
+        (list)=>{
+            res.json({
+                list : list
+            })
+        }
+    )
+
+}
