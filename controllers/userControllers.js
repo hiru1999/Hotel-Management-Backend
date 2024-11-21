@@ -102,6 +102,7 @@ export function loginUser(req,res){
     )
 }
 
+//admin validation
 export function isAdminValid(req){
     
     if(req.user == null){
