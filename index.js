@@ -7,6 +7,7 @@ import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
 import categoryRouter from './routes/categoriesRoute.js'
 import roomRouter from './routes/roomsRoute.js'
+import bookingRouter from './routes/bookingsRoute.js'
 
 dotenv.config()
 
@@ -48,6 +49,7 @@ app.use("/api/users",userRouter)
 app.use("/api/gallery",galleryItemRouter)
 app.use("/api/category",categoryRouter)
 app.use("/api/rooms",roomRouter)
+app.use("/api/bookings",bookingRouter)
 
 
 app.listen(5000, (req,res)=>{
