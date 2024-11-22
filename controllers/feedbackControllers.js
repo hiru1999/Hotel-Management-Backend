@@ -41,3 +41,22 @@ export function postFeedback(req,res){
     
 
 }
+
+//get
+export function getFeedback(req,res){
+    
+    Feedback.find().then(
+        (result)=>{
+            res.json({
+                feedbacks : result
+            })
+        }
+    ).catch(
+        ()=>{
+            res.json({
+                message : "Failed to get feedbacks"
+            })
+        }
+    )
+
+}
