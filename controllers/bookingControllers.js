@@ -1,5 +1,5 @@
 import Booking from "../models/booking.js";
-import { isCustomerValid } from "./userControllers.js";
+import { isAdminValid, isCustomerValid } from "./userControllers.js";
 
 
 
@@ -54,6 +54,54 @@ export function postBooking(req,res){
             })
         }
     )
+
+}
+
+
+//get
+export function getBooking(req,res){
+
+    if(isAdminValid(req)){
+        Booking.find().then(
+            (result)=>{
+                res.json({
+                    bookings : result
+                })
+            }
+        ).catch(
+            ()=>{
+                res.json({
+                    message : "Failed to get bookings"
+                })
+            }
+        )
+        return
+    }
+
+    if(isCustomerValid(req)){
+        const email = req.user.email
+        Booking.findOne({email:email}).then(
+            (result)=>{
+                if(result == null){
+                    res.json({
+                        message : "Bookings not found"
+                    })
+                }else{
+                    res.json({
+                        Booking : result
+                    })
+                }   
+            }
+        ).catch(
+            ()=>{
+                res.json({
+                    message : "Failed to get bookings"
+                })
+            }
+        )
+    }
+    
+    
 
 }
 
