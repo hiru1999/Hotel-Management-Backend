@@ -8,6 +8,7 @@ import dotenv from 'dotenv'
 import categoryRouter from './routes/categoriesRoute.js'
 import roomRouter from './routes/roomsRoute.js'
 import bookingRouter from './routes/bookingsRoute.js'
+import feedbackRouter from './routes/feedbacksRoute.js'
 
 dotenv.config()
 
@@ -50,6 +51,7 @@ app.use("/api/gallery",galleryItemRouter)
 app.use("/api/category",categoryRouter)
 app.use("/api/rooms",roomRouter)
 app.use("/api/bookings",bookingRouter)
+app.use("/api/feedback",feedbackRouter)
 
 
 app.listen(5000, (req,res)=>{
