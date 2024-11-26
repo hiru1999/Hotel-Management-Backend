@@ -47,7 +47,8 @@ export function getUsers(req,res){
 
 //get user
 export function getUser(req,res){
-    const user = req.body.user
+    const user = req.body.user;
+    console.log(user)
     if(user == null){
         res.json({
             message : "not found"

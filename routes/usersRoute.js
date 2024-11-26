@@ -5,7 +5,7 @@ import { deleteUsers, getUser, getUsers, loginUser, postUsers } from '../control
 const userRouter = express.Router()
 
 userRouter.get("/",getUser)
-userRouter.get("/",getUsers)
+// userRouter.get("/",getUsers)
 
 userRouter.post("/",postUsers)
 userRouter.post("/login",loginUser)
