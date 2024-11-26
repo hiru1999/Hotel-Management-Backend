@@ -45,6 +45,21 @@ export function getUsers(req,res){
 
 }
 
+//get user
+export function getUser(req,res){
+    const user = req.body.user
+    if(user == null){
+        res.json({
+            message : "not found"
+        })
+    }else{
+        res.json({
+            message : "found",
+            user : user
+        })
+    }
+}
+
 //delete
 export function deleteUsers(req,res){
     const email = req.body.email;
