@@ -15,6 +15,8 @@ dotenv.config()
 
 const app = express()
 
+app.use(cors())
+
 app.use(bodyParser.json())
 
 const connectionString = process.env.MONGO_URL;
