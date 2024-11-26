@@ -9,6 +9,7 @@ import categoryRouter from './routes/categoriesRoute.js'
 import roomRouter from './routes/roomsRoute.js'
 import bookingRouter from './routes/bookingsRoute.js'
 import feedbackRouter from './routes/feedbacksRoute.js'
+import cors from 'cors'
 
 dotenv.config()
 
