@@ -103,12 +103,12 @@ export function updateCategory(req,res){
 
 //delete
 export function deleteCategory(req,res){
-    if(!isAdminValid(req)){
-        res.status(403).json({
-            message : "Unauthorized"
-        })
-        return
-    }
+    // if(!isAdminValid(req)){
+    //     res.status(403).json({
+    //         message : "Unauthorized"
+    //     })
+    //     return
+    // }
     const name = req.params.name
     Category.findOneAndDelete({name:name}).then(
         ()=>{
